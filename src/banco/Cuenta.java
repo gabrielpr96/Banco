@@ -14,7 +14,8 @@ public class Cuenta {
     private String nCuenta;
     
     public Cuenta(int dineroIni, String cuenta){
-        
+        this.saldo=dineroIni;
+        this.nCuenta=cuenta;
     }
     
     public void retirar(int dinero){
