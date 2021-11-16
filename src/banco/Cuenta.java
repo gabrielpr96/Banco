@@ -7,30 +7,46 @@ package banco;
 
 /**
  *
- * @author gabir
+ * @author usuario
  */
 public class Cuenta {
     private int saldo;
     private String nCuenta;
     
-    public Cuenta(int dineroIni, String cuenta){
-        this.saldo=dineroIni;
+    public Cuenta(int saldo, String cuenta){
+        this.saldo=saldo;
         this.nCuenta=cuenta;
     }
     
-    public void retirar(int dinero){
-        
+    public void retirar(int dinero) throws ExcepcionDinero{
+        if(saldo>dinero || dinero<=0){
+            this.saldo=this.saldo-dinero;
+        }
+        else{
+            throw new ExcepcionDinero("No hay suficiente dinero en la cuenta.");
+        }
     }
     
-    public void ingresar(int dinero){
-        
+    public void ingresar(int dinero)throws ExcepcionDinero{
+        if(dinero>0){
+            this.saldo=this.saldo+dinero;
+        }
+        else{
+            throw new ExcepcionDinero("La cantidad a ingresar es incorrecta.");
+        }
     }
     
     public int getSaldo(){
-        return 0;
+        return this.saldo;
     }
     
     public String getCuenta(){
-        return "0";
+        return nCuenta;
+    }
+    
+    public class ExcepcionDinero extends Exception{
+        public ExcepcionDinero(String msg){
+            super(msg);
+        }
     }
 }
