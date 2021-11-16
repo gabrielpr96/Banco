@@ -5,6 +5,7 @@
  */
 package banco;
 
+import banco.Cuenta.ExcepcionDinero;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -48,8 +49,13 @@ public class CuentaTest {
     @Test
     public void testRetirar() {
         System.out.println("retirar");
-        int dinero = 0;
-        c.retirar(dinero);
+        int dinero = 400;
+        try{
+            c.retirar(dinero);
+        }catch(ExcepcionDinero e){
+            System.out.println(e.getMessage());
+        }
+        
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");
     }
@@ -60,8 +66,13 @@ public class CuentaTest {
     @Test
     public void testIngresar() {
         System.out.println("ingresar");
-        int dinero = 0;
-        c.ingresar(dinero);
+        int dinero = 10;
+        try{
+            c.ingresar(dinero);
+        }catch(ExcepcionDinero e){
+            System.out.println(e.getMessage());
+        }
+        
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");
     }
@@ -85,7 +96,7 @@ public class CuentaTest {
     @Test
     public void testGetCuenta() {
         System.out.println("getCuenta");
-        String expResult = "0";
+        String expResult = "81r92";
         String result = c1.getCuenta();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
